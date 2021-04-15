@@ -38,7 +38,12 @@
                     <td>{{ $user->status }}</td>
                     <td>
                         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-info">EDIT</a>
-                        <button type="submit" class="btn btn-sm btn-danger">DELETE</button>
+                        
+                        <form method="POST" action="{{ route('users.destroy', $user->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger">DELETE</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
