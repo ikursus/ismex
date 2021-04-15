@@ -9,24 +9,13 @@ Route::get('/', [PageController::class, 'welcome']);
 // Route controller Laravel 7 dan kebawah
 // Route::get('/', 'PageController@welcome');
 
-
-
 Route::get('contact-us', function() {
 
     return view('halaman_hubungi');
 
 })->name('halaman.hubungi');
 
-Route::get('{slug}', function ($slug) {
-    return 'Ini adalah route parameter';
-});
-
-// Route::get('profile/{username}', function ($username) {
-
-//     return 'Ini adalah profile bagi: ' . $username;
-
-// });
-
+// Contoh Route dengan parameters (optional)
 Route::get('profile/{username?}', function ($username = null) {
 
     if (is_null($username))
