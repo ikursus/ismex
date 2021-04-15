@@ -15,6 +15,12 @@
         <p>Hello {{ auth()->user()->name }}!</p>
         <p>Selamat datang ke aplikasi ISMEX!</p>
 
+        
+        <ul>
+            <li><a href="{{ route('users.index') }}">Pengurusan Users</a></li>
+        </ul>
+        
+
     </div>
     <div class="card-footer">
             

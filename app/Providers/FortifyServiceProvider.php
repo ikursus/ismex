@@ -35,12 +35,7 @@ class FortifyServiceProvider extends ServiceProvider
 
             $title = config('ismex.page.site_title');
             $welcome = config('ismex.page.welcome_message');
-
-            $senarai_users = [
-                ['username' => 'ahmad'],
-                ['username' => 'abu']
-            ];
-
+            
             // Cara 1 attach variable
             //return view('authentication.borang_login')
             //->with('title', $title)
