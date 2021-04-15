@@ -24,17 +24,17 @@
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" name="name">
+                    <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                 </div>
 
                 <div class="mb-3">
                     <label for="email" class="form-label">Email address</label>
-                    <input type="email" class="form-control" name="email">
+                    <input type="email" class="form-control" name="email" value="{{ old('email') }}">
                 </div>
 
                 <div class="mb-3">
                     <label for="message" class="form-label">Message</label>
-                    <textarea name="message" class="form-control"></textarea>
+                    <textarea name="message" class="form-control">{{ old('message') }}</textarea>
                 </div>
                 
                 <button type="submit" class="btn btn-primary">Submit</button>

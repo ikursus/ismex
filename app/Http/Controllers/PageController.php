@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ContactRequest;
 
 class PageController extends Controller
 {
@@ -25,13 +26,10 @@ class PageController extends Controller
         return view('halaman_hubungi');
     }
 
-    public function contactPost(Request $request)
+    public function contactPost(ContactRequest $request)
     {
         // Validate data
-        $request->validate([
-            'name' => 'required|min:3',
-            'email' => ['required', 'email:filter']
-        ]);
+        $request->validated();
 
 
         // $data = $request->all();
@@ -41,4 +39,6 @@ class PageController extends Controller
 
         return $data;
     }
+
+
 }
