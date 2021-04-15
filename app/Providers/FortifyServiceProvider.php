@@ -54,7 +54,6 @@ class FortifyServiceProvider extends ServiceProvider
             return view('authentication.borang_login', compact('title', 'welcome', 'senarai_users'));
         });
 
-
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
