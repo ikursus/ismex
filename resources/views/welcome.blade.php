@@ -4,14 +4,16 @@
 
 <div class="card">
     <div class="card-header">
-        Welcome Page
+        <div class="text-center">Selamat Datang Ke Aplikasi ISMEX</div>
     </div>
     <div class="card-body">
 
         @include('layouts.alerts')
             
-        <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
-        
+        <div class="d-grid">
+            <a href="{{ route('login') }}" class="btn btn-primary btn-block">Login</a>
+        <div class="d-grid">
+
     </div>
 </div>
 
