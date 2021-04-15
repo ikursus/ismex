@@ -10,10 +10,10 @@
 
         @include('layouts.alerts')
             
-            <form method="POST" action="{{ url('logout') }}">
-                @csrf
-                <button type="submit" class="btn btn-primary">Logout</button>
-            </form>
+        <form method="POST" action="{{ url('logout') }}">
+            @csrf
+            <button type="submit" class="btn btn-primary">Logout</button>
+        </form>
     </div>
 </div>
 

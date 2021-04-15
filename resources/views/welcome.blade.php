@@ -2,26 +2,17 @@
 
 @section('isi_kandungan')
 
-{{ $field }}
+<div class="card">
+    <div class="card-header">
+        Welcome Page
+    </div>
+    <div class="card-body">
 
-<br>
-
-{!! $field !!}
+        @include('layouts.alerts')
+            
+        <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+        
+    </div>
+</div>
 
 @endsection
-
-@foreach($numbers as $item)
-    @section('script')
-
-    SCRIPT_1 = {{ $item['id'] }}
-
-    @endsection
-@endforeach
-
-@foreach($numbers as $item)
-    @push('script2')
-
-    SCRIPT_2 = {{ $item['id'] }}
-
-    @endpush
-@endforeach
