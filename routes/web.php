@@ -1,19 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// Perlu panggil use XXXXController dalam Laravel 8
+use App\Http\Controllers\PageController;
 
-Route::get('/', function () {
+// Route controller Laravel 8 dan keatas
+Route::get('/', [PageController::class, 'welcome']);
+// Route controller Laravel 7 dan kebawah
+// Route::get('/', 'PageController@welcome');
 
-    $numbers = [
-        ['id' => 1],
-        ['id' => 2],
-        ['id' => 3]
-    ];
 
-    $field = '<input type="text" name="nama">';
-
-    return view('welcome', compact('numbers', 'field'));
-});
 
 Route::get('contact-us', function() {
 
