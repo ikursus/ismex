@@ -48,8 +48,8 @@
                     <label for="role" class="form-label">Role</label>
                     <select class="form-control" name="role">
                         <option value="">-- Pilih Role --</option>
-                        <option value="user" {{ $user->role == 'user' ? 'checked=checked' : null }}>User</option>
-                        <option value="admin" {{ $user->role == 'admin' ? 'checked=checked' : null }}>Admin</option>
+                        <option value="user" {{ $user->role == 'user' ? 'selected="selected"' : null }}>User</option>
+                        <option value="admin" {{ $user->role == 'admin' ? 'selected="selected"' : null }}>Admin</option>
                     </select>
                 </div>
                 
@@ -57,8 +57,8 @@
                     <label for="role" class="form-label">Status</label>
                     <select class="form-control" name="status">
                         <option value="">-- Pilih Status --</option>
-                        <option value="pending" {{ $user->status == 'pending' ? 'checked=checked' : null }}>Pending</option>
-                        <option value="active" {{ $user->status == 'active' ? 'checked=checked' : null }}>Active</option>
+                        <option value="pending" {{ $user->status == 'pending' ? 'selected="selected"' : null }}>Pending</option>
+                        <option value="active" {{ $user->status == 'active' ? 'selected="selected"' : null }}>Active</option>
                     </select>
                 </div>
                 <a href="{{ route('users.index') }}" class="btn btn-dark">Kembali</a>

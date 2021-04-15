@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -36,17 +37,10 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         // Semak / validate data yang dihantar
-        $request->validate([
-            'name' => ['required'],
-            'username' => ['required', 'unique:users,username'],
-            'email' => ['required', 'email:filter', 'unique:users,email'],
-            'password' => ['required', 'min:5', 'confirmed'],
-            'role' => ['required', 'in:admin,user'],
-            'status' => ['required', 'in:active,pending']
-        ]);
+        $request->validated();
         // Dapatkan data yang ingin disimpan ke dalam table users
         $data = $request->only([
             'name', 'username', 'email', 'role', 'status', 'mykad'
@@ -90,9 +84,21 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        dd($request->all());
+        // Semak / validate data yang dihantar
+        $request->validated();
+
+        // Dapatkan data yang ingin disimpan ke dalam table users
+        $data = $request->only([
+            'name', 'username', 'email', 'role', 'status', 'mykad'
+        ]);
+        // Untuk data password, encrypt terlebih dahulu dan sertakan ke array $data
+        $data['password'] = bcrypt($request->password);
+        // Simpan data ke table users
+        DB::table('users')->where('id', $id)->update($data);
+        // Selesai masuk data, redirect pengguna ke senarai users
+        return redirect()->route('users.index')->with('mesej-berjaya', 'Rekod berjaya dikemaskini!');
     }
 
     /**
