@@ -15,6 +15,7 @@ class UserController extends Controller
     public function index()
     {
         $senarai_users = DB::table('users')->get();
+        // $senarai_users = DB::table('users')->where('status', 'active')->get();
 
         return view('template_users.senarai', compact('senarai_users'));
     }
@@ -37,6 +38,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => ['required'],
+            'username' => ['required', 'unique:users,username'],
+            'email' => ['required', 'email:filter', 'unique:users,email'],
+            'role' => ['required', 'in:admin,user'],
+            'status' => ['required', 'in:active,pending']
+        ]);
+
         dd($request->all());
     }
 
