@@ -19,4 +19,16 @@ class PageController extends Controller
     
         return view('welcome', compact('numbers', 'field'));
     }
+
+    public function contact()
+    {
+        return view('halaman_hubungi');
+    }
+
+    public function contactPost(Request $request)
+    {
+        $data = $request->all();
+
+        return $data;
+    }
 }

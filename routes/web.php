@@ -3,27 +3,20 @@
 use Illuminate\Support\Facades\Route;
 // Perlu panggil use XXXXController dalam Laravel 8
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\UserController;
 
 // Route controller Laravel 8 dan keatas
 Route::get('/', [PageController::class, 'welcome']);
+// Paparkan borang contact
+Route::get('contact-us', [PageController::class, 'contact'])->name('halaman.hubungi');
+// Terima data daripada borang contact yang sama
+Route::post('contact-us', [PageController::class, 'contactPost'])->name('hubungi.post');
 // Route controller Laravel 7 dan kebawah
 // Route::get('/', 'PageController@welcome');
 
-Route::get('contact-us', function() {
+//Route::get($uri, $action);
+//$action = [Controller, method]
 
-    return view('halaman_hubungi');
-
-})->name('halaman.hubungi');
-
-// Contoh Route dengan parameters (optional)
-Route::get('profile/{username?}', function ($username = null) {
-
-    if (is_null($username))
-    {
-        return redirect()->route('halaman.hubungi');
-    }
-
-    return 'Ini adalah profile bagi: ' . $username;
-    
-})->where('username', '[A-Za-z0-9]+');
+Route::get('users/datatables', [UserController::class, 'datatables']);
+Route::resource('users', UserController::class);
 
