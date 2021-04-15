@@ -32,6 +32,11 @@
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" name="password">
                 </div>
+
+                <div class="mb-3">
+                    <label for="password_confirmation" class="form-label">Password Confirmation</label>
+                    <input type="password" class="form-control" name="password_confirmation">
+                </div>
                 
                 <div class="mb-3">
                     <label for="mykad" class="form-label">MyKAD</label>
