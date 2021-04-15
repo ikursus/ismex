@@ -40,5 +40,9 @@ class PageController extends Controller
         return $data;
     }
 
+    public function home()
+    {
+        return view('home');
+    }
 
 }

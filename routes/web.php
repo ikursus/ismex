@@ -7,6 +7,8 @@ use App\Http\Controllers\UserController;
 
 // Route controller Laravel 8 dan keatas
 Route::get('/', [PageController::class, 'welcome']);
+Route::get('/home', [PageController::class, 'home']);
+
 // Paparkan borang contact
 Route::get('contact-us', [PageController::class, 'contact'])->name('halaman.hubungi');
 // Terima data daripada borang contact yang sama
