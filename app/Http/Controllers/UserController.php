@@ -38,6 +38,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        // Semak / validate data yang dihantar
         $request->validate([
             'name' => ['required'],
             'username' => ['required', 'unique:users,username'],
@@ -46,8 +47,16 @@ class UserController extends Controller
             'role' => ['required', 'in:admin,user'],
             'status' => ['required', 'in:active,pending']
         ]);
-
-        dd($request->all());
+        // Dapatkan data yang ingin disimpan ke dalam table users
+        $data = $request->only([
+            'name', 'username', 'email', 'role', 'status', 'mykad'
+        ]);
+        // Untuk data password, encrypt terlebih dahulu dan sertakan ke array $data
+        $data['password'] = bcrypt($request->password);
+        // Simpan data ke table users
+        DB::table('users')->insert($data);
+        // Selesai masuk data, redirect pengguna ke senarai users
+        return redirect()->route('users.index')->with('mesej-berjaya', 'Rekod berjaya disimpan!');
     }
 
     /**
