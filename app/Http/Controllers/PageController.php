@@ -27,7 +27,17 @@ class PageController extends Controller
 
     public function contactPost(Request $request)
     {
-        $data = $request->all();
+        // Validate data
+        $request->validate([
+            'name' => 'required|min:3',
+            'email' => ['required', 'email:filter']
+        ]);
+
+
+        // $data = $request->all();
+        //$data = $request->only(['name', 'message']);
+        // $data = $request->input('name');
+        $data = $request->name;
 
         return $data;
     }
