@@ -18,6 +18,9 @@
                 { data: 'username', name: 'username' },
                 { data: 'email', name: 'email' },
                 { data: 'role', name: 'role' },
+                { data: 'profile.jawatan', name: 'profile.jawatan' },
+                { data: 'profile.gred', name: 'profile.gred' },
+                { data: 'city', name: 'city' },
                 { data: 'status', name: 'status' },
                 { data: 'action', name: 'action', orderable:false, searchable:false }
             ],
@@ -40,7 +43,8 @@
         <p>
             <a href="{{ route('users.create') }}" class="btn btn-primary">Tambah User</a>
         </p>
-            
+         
+        <div class="table-responsive">
         <table class="table table-bordered" id="table-users">
             <thead>
                 <tr>
@@ -49,11 +53,15 @@
                     <th>USERNAME</th>
                     <th>EMAIL</th>
                     <th>ROLE</th>
+                    <th>JAWATAN</th>
+                    <th>GRED</th>
+                    <th>CITY</th>
                     <th>STATUS</th>
                     <th>ACTION</th>
                 </tr>
             </thead>
         </table>
+        </div>
 
     </div>
     <div class="card-footer">

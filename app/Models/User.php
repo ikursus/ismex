@@ -54,7 +54,7 @@ class User extends Authenticatable
     public function profile()
     {
         return $this->hasOne(Profile::class);
-        return $this->hasOne(Profile::class, 'nama_column_child_relation', 'nama_column_parent_relation');
+        //return $this->hasOne(Profile::class, 'nama_column_child_relation', 'nama_column_parent_relation');
         // nama_column_child_relation = user_id
         // user = ikut model
         // id = ikut primary key pada table users

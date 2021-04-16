@@ -26,11 +26,15 @@ class UserController extends Controller
 
     public function datatables()
     {
-        $query = User::query();
+        $query = User::query()
+        ->with('profile');
 
         return DataTables::of($query)
         ->addColumn('action', function ($user) {
             return view('template_users.action', compact('user'));
+        })
+        ->addColumn('city', function ($user) {
+            return $user->profile->city->nama;
         })
         ->make(true);
     }
