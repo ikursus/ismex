@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
+use App\Models\Profile;
 use DataTables;
 
 class UserController extends Controller
@@ -26,16 +27,15 @@ class UserController extends Controller
 
     public function datatables()
     {
-        $query = User::query()
-        ->with('profile');
+        $query = Profile::query()
+        ->with('user')
+        ->with('city');
 
         return DataTables::of($query)
-        ->addColumn('action', function ($user) {
-            return view('template_users.action', compact('user'));
+        ->addColumn('action', function ($profile) {
+            return view('template_users.action', compact('profile'));
         })
-        ->addColumn('city', function ($user) {
-            return $user->profile->city->nama;
-        })
+        ->rawColumns(['action'])
         ->make(true);
     }
 
