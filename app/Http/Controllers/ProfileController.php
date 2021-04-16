@@ -48,7 +48,7 @@ class ProfileController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-        // $user = User::find($id);
+        //$user = User::find($id);
 
         return view('template_profiles.show', compact('user'));
     }

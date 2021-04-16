@@ -3,15 +3,11 @@
 @section('isi_kandungan')
 <div class="card">
     <div class="card-header">
-        Senarai Users
+        Profile {{ $user->name }}
     </div>
     <div class="card-body">
 
         @include('layouts.alerts')
-
-        <p>
-            <a href="{{ route('users.create') }}" class="btn btn-primary">Tambah User</a>
-        </p>
             
         <table class="table table-bordered">
             <thead>
@@ -23,7 +19,48 @@
 
             <tbody>
                 <tr>
+                    <td>NAMA</td>
                     <td></td>
+                </tr>
+                <tr>
+                    <td>USERNAME</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>EMAIL</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>STATUS AKAUN</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>ROLE</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>JANTINA</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>JAWATAN</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>GRED</td>
+                    <td></td>
+                </tr>
+                
+                <tr>
+                    <td>TARAF PERKAHWINAN</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>TELEFON</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>ALAMAT</td>
                     <td></td>
                 </tr>
             </tbody>
