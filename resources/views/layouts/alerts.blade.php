@@ -13,3 +13,9 @@
     {{ session('mesej-berjaya') }}
 </div>
 @endif
+
+@if(session('mesej-gagal'))
+<div class="alert alert-danger">
+    {{ session('mesej-gagal') }}
+</div>
+@endif

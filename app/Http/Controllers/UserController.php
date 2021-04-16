@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests\UserRequest;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -109,7 +110,17 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('users')->where('id', $id)->delete();
+        //DB::table('users')->where('id', $id)->delete();
+        $user = User::findOrFail($id);
+
+        
+        if (!is_null($user->profile))
+        {
+            return redirect()->back()->with('mesej-gagal', 'Akaun ini ada rekod profile');
+        }
+
+        $user->delete();
+
         // Selesai masuk data, redirect pengguna ke senarai users
         return redirect()->route('users.index')->with('mesej-berjaya', 'Rekod berjaya dihapuskan!');
     }

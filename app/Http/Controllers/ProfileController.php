@@ -87,7 +87,9 @@ class ProfileController extends Controller
     public function update(Request $request, $id)
     {
         $profile = Profile::findOrFail($id);
+
         $data = $request->all();
+        
         $profile->update($data);
 
         return redirect()->back()->with('mesej-berjaya', 'Rekod berjaya dikemaskini.');
