@@ -59,8 +59,9 @@ class ProfileController extends Controller
         // $user = User::findOrFail($id);
         //$user = User::find($id);
         $profile = Profile::firstOrCreate(['user_id' => $id]);
+        $user = User::find($id);
 
-        return view('template_profiles.show', compact('profile'));
+        return view('template_profiles.show', compact('profile', 'user'));
     }
 
     /**
@@ -72,7 +73,10 @@ class ProfileController extends Controller
     public function edit($id)
     {
         $profile = Profile::findOrFail($id);
-        $cities = City::select('nama', 'id')->get();
+        // $cities = City::select('nama', 'id')->get();
+        $cities = City::pluck('nama', 'id');
+
+        //dd($cities);
 
         return view('template_profiles.edit', compact('profile', 'cities'));
     }
@@ -89,7 +93,7 @@ class ProfileController extends Controller
         $profile = Profile::findOrFail($id);
 
         $data = $request->all();
-        
+
         $profile->update($data);
 
         return redirect()->back()->with('mesej-berjaya', 'Rekod berjaya dikemaskini.');

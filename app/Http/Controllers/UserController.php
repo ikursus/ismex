@@ -112,7 +112,6 @@ class UserController extends Controller
     {
         //DB::table('users')->where('id', $id)->delete();
         $user = User::findOrFail($id);
-
         
         if (!is_null($user->profile))
         {

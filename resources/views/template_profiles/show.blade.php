@@ -3,7 +3,7 @@
 @section('isi_kandungan')
 <div class="card">
     <div class="card-header">
-        Profile {{ $profile->name }}
+        Profile {{ $profile->user->name }}
     </div>
     <div class="card-body">
 

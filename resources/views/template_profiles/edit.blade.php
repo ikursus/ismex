@@ -10,27 +10,21 @@
 
         @include('layouts.alerts')
             
-            <form method="POST" action="{{ route('profiles.update', $profile->id) }}">
-                @csrf
-                @method('PATCH')
+            {!! Form::model($profile, ['method' => 'PATCH', 'route' => ['profiles.update', $profile->id]]) !!}
                 
                 <div class="mb-3">
                     <label for="name" class="form-label">Jawatan</label>
-                    <input type="text" class="form-control" name="jawatan" value="{{ $profile->jawatan }}">
+                    {!! Form::text('jawatan', null, ['class' => 'form-control']) !!}
                 </div>
                 
                 <div class="mb-3">
                     <label for="gred" class="form-label">Gred</label>
-                    <input type="text" class="form-control" name="gred" value="{{ $profile->gred }}">
+                    {!! Form::text('gred', null, ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="mb-3">
                     <label for="jantina" class="form-label">Jantina</label>
-                    <select name="jantina" class="form-control">
-                        <option value="">-- Pilih Jantina --</option>
-                        <option value="lelaki" {{ $profile->jantina == 'lelaki' ? 'selected="selected"' : null }}>LELAKI</option>
-                        <option value="perempuan" {{ $profile->jantina == 'perempuan' ? 'selected="selected"' : null }}>PEREMPUAN</option>
-                    </select>
+                    {!! Form::select('jantina', ['lelaki' => 'LELAKI', 'perempuan' => 'PEREMPUAN'], null, ['class' => 'form-control']) !!}
                 </div>
                 
                 <div class="mb-3">
@@ -49,15 +43,13 @@
                 
                 <div class="mb-3">
                     <label for="city_id" class="form-label">Bandar</label>
-                    <select class="form-control" name="city_id">
-                        @foreach($cities as $city)
-                        <option value="{{ $city->id }}" {{ $profile->city_id == $city->id ? 'selected="selected"' : null }}>{{ $city->nama }}</option>
-                        @endforeach
-                    </select>
+                    {!! Form::select('city_id', $cities, null, ['class' => 'form-control']) !!}
                 </div>
                 <a href="{{ route('profiles.show', $profile->user->id) }}" class="btn btn-dark">Kembali</a>
                 <button type="submit" class="btn btn-primary">Simpan</button>
-            </form>
+
+            {!! Form::close() !!}
+
 
     </div>
 </div>
