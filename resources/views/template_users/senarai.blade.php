@@ -38,7 +38,7 @@
                     <td>{{ $user->status }}</td>
                     <td>
                         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-info">EDIT</a>
-                        
+                        <a href="{{ route('profiles.show', $user->id) }}" class="btn btn-sm btn-warning">PROFILE</a>
                         <form method="POST" action="{{ route('users.destroy', $user->id) }}">
                             @csrf
                             @method('DELETE')

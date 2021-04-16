@@ -46,7 +46,7 @@ class FortifyServiceProvider extends ServiceProvider
              //       'welcome' => $welcome
              //   ]);
             // Cara 3 attach variable
-            return view('authentication.borang_login', compact('title', 'welcome', 'senarai_users'));
+            return view('authentication.borang_login', compact('title', 'welcome'));
         });
 
         Fortify::createUsersUsing(CreateNewUser::class);

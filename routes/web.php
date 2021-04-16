@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 // Perlu panggil use XXXXController dalam Laravel 8
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 
 // Route controller Laravel 8 dan keatas
 Route::get('/', [PageController::class, 'welcome']);
@@ -21,6 +22,7 @@ Route::post('contact-us', [PageController::class, 'contactPost'])->name('hubungi
 
 Route::get('users/datatables', [UserController::class, 'datatables']);
 Route::resource('users', UserController::class);
+Route::get('profiles/{id}', [ProfileController::class, 'show'])->name('profiles.show');
 
 // Route::get('users', [UserController::class, 'index'])->name('users.index');
 // Route::get('users/create', [UserController::class, 'create'])->name('users.create');
