@@ -37,7 +37,15 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // // $data = $request->all();
+        // $data['jantina'] = $request->jenis_jantina;
+
+        // Profile::create($data);
+
+        // $profile = new Profile;
+        // $profile->jantina = $request->jantina;
+        // $profile->gred = $request->form_field_gred;
+        // $profile->save();
     }
 
     /**

@@ -55,7 +55,7 @@
                         @endforeach
                     </select>
                 </div>
-                <a href="{{ route('profiles.show', $profile->id) }}" class="btn btn-dark">Kembali</a>
+                <a href="{{ route('profiles.show', $profile->user->id) }}" class="btn btn-dark">Kembali</a>
                 <button type="submit" class="btn btn-primary">Simpan</button>
             </form>
 

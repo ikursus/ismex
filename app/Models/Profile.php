@@ -29,6 +29,6 @@ class Profile extends Model
 
     public function city()
     {
-        return $this->belongsTo(City::class)->withDefault(['nama' => 'BELUM KEMASKINI']);
+        return $this->belongsTo(City::class, 'city_id', 'id')->withDefault(['nama' => 'BELUM KEMASKINI']);
     }
 }
