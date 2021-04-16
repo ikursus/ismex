@@ -19,8 +19,9 @@ class CreateProfilesTable extends Migration
             $table->string('jawatan')->nullable();
             $table->string('gred')->nullable();
             $table->string('jantina')->nullable();
-            $table->string('taraf_perkahwinan');
+            $table->string('taraf_perkahwinan')->nullable();
             $table->string('telefon')->nullable();
+            $table->bigInteger('city_id')->nullable();
             $table->text('address')->nullable();
             $table->timestamps();
             // Set foreign key supaya data pada user_id

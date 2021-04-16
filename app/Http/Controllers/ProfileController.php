@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\City;
 
 class ProfileController extends Controller
 {
@@ -47,10 +48,11 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
+        // $user = User::findOrFail($id);
         //$user = User::find($id);
+        $profile = Profile::firstOrCreate(['user_id' => $id]);
 
-        return view('template_profiles.show', compact('user'));
+        return view('template_profiles.show', compact('profile'));
     }
 
     /**
@@ -59,9 +61,12 @@ class ProfileController extends Controller
      * @param  \App\Models\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function edit(Profile $profile)
+    public function edit($id)
     {
-        //
+        $profile = Profile::findOrFail($id);
+        $cities = City::select('nama', 'id')->get();
+
+        return view('template_profiles.edit', compact('profile', 'cities'));
     }
 
     /**
@@ -71,9 +76,13 @@ class ProfileController extends Controller
      * @param  \App\Models\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Profile $profile)
+    public function update(Request $request, $id)
     {
-        //
+        $profile = Profile::findOrFail($id);
+        $data = $request->all();
+        $profile->update($data);
+
+        return redirect()->back()->with('mesej-berjaya', 'Rekod berjaya dikemaskini.');
     }
 
     /**
