@@ -1,5 +1,30 @@
 @extends('layouts.induk')
 
+@section('css_vendor')
+<link href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet">
+@endsection
+
+@section('script')
+<script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script>
+    $(function() {
+        $('#table-users').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '{!! route('users.datatables') !!}',
+            columns: [
+                { data: 'id', name: 'id' },
+                { data: 'name', name: 'name' },
+                { data: 'email', name: 'email' },
+                { data: 'role', name: 'role' },
+                { data: 'status', name: 'status' },
+                { data: 'action', name: 'action', orderable:false, searchable:false }
+            ]
+        });
+    });
+</script>
+@endsection
+
 @section('isi_kandungan')
 
 <div class="card">
@@ -14,7 +39,7 @@
             <a href="{{ route('users.create') }}" class="btn btn-primary">Tambah User</a>
         </p>
             
-        <table class="table table-bordered">
+        <table class="table table-bordered" id="table-users">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -26,29 +51,6 @@
                     <th>ACTION</th>
                 </tr>
             </thead>
-
-            <tbody>
-                @foreach( $senarai_users as $user )
-                <tr>
-                    <td>{{ $user->id }}</td>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->username }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->role }}</td>  
-                    <td>{{ $user->status }}</td>
-                    <td>
-                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-info">EDIT</a>
-                        <a href="{{ route('profiles.show', $user->id) }}" class="btn btn-sm btn-warning">PROFILE</a>
-                        <form method="POST" action="{{ route('users.destroy', $user->id) }}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger">DELETE</button>
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-
         </table>
 
     </div>

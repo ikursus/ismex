@@ -12,6 +12,7 @@
         padding-top: 50px;
     }
     </style>
+    @yield('css_vendor')
 </head>
 <body>
 
