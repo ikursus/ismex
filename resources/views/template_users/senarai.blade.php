@@ -15,11 +15,13 @@
             columns: [
                 { data: 'id', name: 'id' },
                 { data: 'name', name: 'name' },
+                { data: 'username', name: 'username' },
                 { data: 'email', name: 'email' },
                 { data: 'role', name: 'role' },
                 { data: 'status', name: 'status' },
                 { data: 'action', name: 'action', orderable:false, searchable:false }
-            ]
+            ],
+            "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ]
         });
     });
 </script>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
+use DataTables;
 
 class UserController extends Controller
 {
@@ -16,10 +17,22 @@ class UserController extends Controller
      */
     public function index()
     {
-        $senarai_users = DB::table('users')->get();
+        //$senarai_users = DB::table('users')->get();
         // $senarai_users = DB::table('users')->where('status', 'active')->get();
 
-        return view('template_users.senarai', compact('senarai_users'));
+        //return view('template_users.senarai', compact('senarai_users'));
+        return view('template_users.senarai');
+    }
+
+    public function datatables()
+    {
+        $query = User::query();
+
+        return DataTables::of($query)
+        ->addColumn('action', function ($user) {
+            return view('template_users.action', compact('user'));
+        })
+        ->make(true);
     }
 
     /**
@@ -122,10 +135,5 @@ class UserController extends Controller
 
         // Selesai masuk data, redirect pengguna ke senarai users
         return redirect()->route('users.index')->with('mesej-berjaya', 'Rekod berjaya dihapuskan!');
-    }
-
-    public function datatables()
-    {
-        
     }
 }

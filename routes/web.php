@@ -20,7 +20,7 @@ Route::post('contact-us', [PageController::class, 'contactPost'])->name('hubungi
 //Route::get($uri, $action);
 //$action = [Controller, method]
 
-Route::get('users/datatables', [UserController::class, 'datatables']);
+Route::get('users/datatables', [UserController::class, 'datatables'])->name('users.datatables');
 Route::resource('users', UserController::class);
 Route::get('profiles/{id}', [ProfileController::class, 'show'])->name('profiles.show');
 Route::get('profiles/{id}/edit', [ProfileController::class, 'edit'])->name('profiles.edit');
