@@ -69,7 +69,7 @@
 
     </div>
     <div class="card-footer">
-        <a href="{{ route('home') }}" class="btn btn-dark">HOME</a>
+        <a href="{{ route('users.index') }}" class="btn btn-dark">KEMBALI</a>
     </div>
 </div>
 @endsection
